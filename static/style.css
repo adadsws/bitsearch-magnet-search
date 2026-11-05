@@ -1,0 +1,297 @@
+:root{color-scheme:dark;--bg:#091017;--panel:#101a24;--line:#26394a;--text:#edf6fb;--muted:#8ba1b3;--accent:#5ce3ad}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% -10%,rgba(92,227,173,.12),transparent 34%),var(--bg);color:var(--text);font:15px/1.5 system-ui,"Microsoft YaHei",sans-serif}header,main{width:min(1100px,calc(100% - 32px));margin:auto}header{min-height:180px;display:flex;align-items:center;justify-content:space-between;gap:20px}h1{font-size:42px;margin:0}h2{font-size:20px;margin:0 0 16px}h3{font-size:17px;margin:0}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.16em}.muted,#status{color:var(--muted)}.panel{padding:24px;margin:0 0 20px;background:var(--panel);border:1px solid var(--line);border-radius:14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.source{grid-template-columns:2fr 1fr}.workbench{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}.search-card{padding:18px;border:1px solid var(--line);border-radius:10px;background:#0d1720}.search-card.active{border-color:var(--accent)}.badge{font-size:12px;color:var(--accent)}label{display:grid;gap:7px}input,select,textarea,button{font:inherit;border-radius:8px;padding:11px 12px}input,select,textarea{color:var(--text);background:#172432;border:1px solid var(--line);width:100%}button{border:1px solid var(--accent);background:var(--accent);color:#061710;cursor:pointer}.secondary{background:transparent;color:var(--accent)}.actions,.combined,.filters{display:flex;gap:10px;margin-top:20px}.combined{margin:0}.combined select{width:90px}.filters{flex-wrap:wrap}.filters button{font-size:12px;padding:5px 9px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.result{border-top:1px solid var(--line);padding:15px 0}.result h3{font-size:16px;margin:0 0 5px;overflow-wrap:anywhere}.result p{margin:5px 0;color:var(--muted)}a{color:var(--accent);overflow-wrap:anywhere}.links{display:flex;gap:16px;flex-wrap:wrap}details{margin-top:10px}summary{cursor:pointer;color:var(--accent)}#error{color:#ff7777}#status.busy{color:#ffd27b}#status.fail{color:#ff7777}@media(max-width:800px){.workbench{grid-template-columns:1fr}}@media(max-width:650px){header{min-height:145px}h1{font-size:32px}.grid,.source{grid-template-columns:1fr}.panel{padding:17px}}
+.input-shell{position:relative;display:block;min-width:0;width:100%}.input-shell input,.input-shell textarea{padding-right:44px}.clear-input{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;padding:0;border:0;background:#26394a;color:var(--text);font-size:20px;line-height:1}.clear-input[hidden]{display:none}.input-shell:has(textarea) .clear-input{top:19px}.input-shell:has(input[type=date]) .clear-input{right:34px}.metadata-stream-card{height:232px;min-width:0;margin:8px 0;padding:11px 13px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#0d1720;box-shadow:0 6px 18px rgba(0,0,0,.1)}.metadata-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:9px}.metadata-card-title{min-width:0}.metadata-card-title h3{font-size:15px;line-height:1.25}.metadata-card-title p{font-size:11px;margin:2px 0}.card-badge{flex:0 0 auto;padding:3px 7px;border:1px solid var(--accent);border-radius:6px;color:var(--accent);font-size:11px}.metadata-card-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin:9px 0}.metadata-card-facts div{min-width:0;padding:5px 7px;border:1px solid var(--line);border-radius:7px;background:#172432}.metadata-card-facts dt{color:var(--muted);font-size:11px}.metadata-card-facts dd{margin:2px 0 0;font:700 12px/1.3 ui-monospace,monospace;overflow-wrap:anywhere}.card-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:7px 0}.card-actions a,.card-actions button{padding:5px 9px;border:1px solid var(--accent);border-radius:7px;color:var(--accent);font-size:12px;text-decoration:none;background:transparent}.card-actions a:hover,.card-actions button:hover{background:rgba(92,227,173,.1)}.metadata-stream-card h4{margin:8px 0 4px;font-size:12px}.metadata-file-tree{margin:0;padding:0;list-style:none;font-size:12px}.metadata-file-node{padding:4px 6px;border-bottom:1px solid var(--line);background:#172432;overflow-wrap:anywhere}.metadata-stream-card>button{margin-top:5px;padding:4px 8px;font-size:12px}@media(max-width:650px){.metadata-card-header{flex-direction:column}.metadata-card-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.metadata-stream-card{height:280px}}
+.site-nav{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}.site-options{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:18px}.metadata-stream-card{height:420px}.detail-error{color:#ff7777}.pagination{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0 0}@media(max-width:650px){.site-options{grid-template-columns:1fr}.metadata-stream-card{height:480px}}
+/* API 界面统一使用 13、16、24 px 三档文字。 */
+body,input,select,textarea,button,label,.result h3,.metadata-card-title h3,.metadata-stream-card h4{font-size:16px}
+h1,h2{font-size:24px}
+.eyebrow,.muted,#status,.badge,.card-badge,.metadata-card-title p,.metadata-card-facts dt,.metadata-card-facts dd,.card-actions a,.card-actions button,.metadata-file-tree,.filters button{font-size:13px}
+@media(max-width:650px){h1{font-size:24px}}
+/* 借鉴 XCool-603/torrent-search 的紧凑搜索区与可收起高级选项，仅保留本项目 API 单源流程。 */
+.search-card{margin:18px 0}.advanced-options{margin-top:16px;border:1px solid var(--line);border-radius:10px;background:#0d1720}.advanced-options summary{padding:14px 18px;font-size:16px;list-style-position:inside}.advanced-options[open] summary{border-bottom:1px solid var(--line)}.advanced-body{padding:4px 18px 18px}.advanced-body .extras{margin-top:14px}.advanced-body .site-options{margin-bottom:0}
+/* API 与本地各有常用区和较少用条件折叠区；标签仍集中分组。 */
+.filter-section{margin-top:14px;padding:18px;border:1px solid var(--line);border-radius:10px;background:#0d1720}.filter-section .section-head{margin-bottom:8px}.filter-section>h3{margin-bottom:8px}.filter-section>p{margin:8px 0}.filter-section .search-card{margin:12px 0}.filter-section .search-card h3{margin-bottom:12px}.filter-section .advanced-options{margin-top:16px}.local-primary,.api-primary{margin-top:14px}.advanced-body .site-options{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.filter-group{min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#0d1720}.filter-group h3{font-size:16px}.filter-group .filters{margin-top:8px;color:var(--muted);font-size:13px}@media(max-width:650px){.advanced-body .site-options,.filter-groups{grid-template-columns:1fr}}
+/* 结果与额度各占一个框，动态数值着色；次要 API 字段默认收起。 */
+.result-overview,.result-rate{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#172432;color:var(--text);font-size:16px;font-weight:700;line-height:1.3;overflow-wrap:anywhere}.result-overview{display:flex;gap:8px 24px;flex-wrap:wrap;margin:6px 0 10px}.result-overview:empty{display:none}.result-metric{min-width:0}.result-overview strong,.result-rate strong{color:var(--accent);font:inherit}.result-rate{margin:0 0 14px}.result-rate:empty{display:none}.card-more{margin:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0}.card-more summary{font-size:13px}.card-more .metadata-card-facts{grid-template-columns:repeat(3,minmax(0,1fr))}.card-more .mono{overflow-wrap:anywhere}@media(max-width:650px){.result-overview{display:grid;grid-template-columns:1fr}.card-more .metadata-card-facts{grid-template-columns:1fr 1fr}}
+/* 卡片事实按大小和活跃度分行。 */
+.metadata-card-facts.size-facts{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:5px}.metadata-card-facts.activity-facts{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:0}
+/* 文件树只显示一次公共目录，文件名留在叶节点。 */
+.file-tree-level{list-style:none;margin:0;padding:0;font-size:13px}.file-tree-level .file-tree-level{margin-left:10px;padding-left:12px;border-left:1px solid var(--line)}.file-tree-folder details{margin:0}.file-tree-folder summary{padding:5px 8px;border-radius:6px;background:#172432;color:var(--accent);overflow-wrap:anywhere}.file-tree-file{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:2px 0;padding:5px 8px;border-radius:6px;background:#172432;overflow-wrap:anywhere}.file-tree-file span:first-child{min-width:0}.file-tree-size{flex:0 0 auto;color:var(--muted)}
+/* Torrent 元数据获取失败只作用于对应卡片。 */
+.result .detail-error{color:#ff7777}
+/* API 额度常驻页面顶部；结果区只保留分页汇总与筛选说明。 */
+.api-status-bar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(13,23,32,.97);backdrop-filter:blur(8px)}
+.api-status-bar .result-rate{width:min(1100px,calc(100% - 32px));margin:0 auto;padding:9px 0;border:0;border-radius:0;background:transparent;font-size:16px}
+.api-status-content{width:min(1100px,calc(100% - 32px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.api-status-bar .result-rate{width:auto;margin:0;min-width:0}
+.api-status-bar #status{flex:0 0 auto;text-align:right;font-size:13px}
+@media(max-width:650px){.api-status-content{align-items:flex-start;flex-wrap:wrap;gap:0 12px}.api-status-bar #status{margin-left:auto;padding-bottom:8px}}
+/* 本地页补齐开关与目标条数在本地高级条件内。 */
+.local-fill-options{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:16px;margin-top:16px}
+.local-fill-toggle{display:flex;align-items:center;gap:10px;min-height:46px}
+.local-fill-toggle input{width:auto;accent-color:var(--accent)}
+@media(max-width:650px){.local-fill-options{grid-template-columns:1fr}}
+/* 批量补全操作与搜索按钮同列，显示本页待处理数。 */
+.actions{flex-wrap:wrap;align-items:center}.actions button:disabled{opacity:.45;cursor:not-allowed}.detail-pending{color:#ffd27b!important}
+/* Torrent 成功结果在批量操作后可直接辨认，文件大小与成功提示使用同一强调色。 */
+#status.success{color:var(--accent);font-weight:700}
+.metadata-stream-card.torrent-complete{border-color:var(--accent);box-shadow:0 0 0 1px rgba(92,227,173,.3),0 6px 18px rgba(0,0,0,.1)}
+.metadata-card-header{flex-wrap:wrap}
+.torrent-success-badge{padding:3px 7px;border-radius:6px;background:rgba(92,227,173,.16);color:var(--accent);font-size:13px;font-weight:700}
+.result .torrent-success-notice{display:inline-block;padding:5px 8px;border:1px solid rgba(92,227,173,.55);border-radius:6px;background:rgba(92,227,173,.1);color:var(--accent)}
+.torrent-complete .file-tree-size{color:var(--accent);font-weight:700}
+/* 补齐结果按成功/失败拉开字号和卡片尺寸。 */
+.metadata-stream-card.torrent-complete{height:480px;font-size:18px}
+.torrent-complete .metadata-card-title h3{font-size:20px;line-height:1.35}
+.torrent-complete .torrent-success-badge{font-size:16px}
+.torrent-complete .metadata-card-facts dt,.torrent-complete .card-actions a,.torrent-complete .card-actions button,.torrent-complete .file-tree-level{font-size:15px}
+.torrent-complete .metadata-card-facts dd{font-size:18px}
+.torrent-complete h4,.torrent-complete .file-tree-size{font-size:16px}
+.result .torrent-success-notice{font-size:16px;font-weight:700}
+.metadata-stream-card.torrent-failed{height:300px;font-size:13px}
+.torrent-failed .metadata-card-title h3{font-size:14px}
+.torrent-failed .metadata-card-facts dt,.torrent-failed .card-actions a,.torrent-failed .card-actions button,.torrent-failed .file-tree-level{font-size:11px}
+.torrent-failed .metadata-card-facts dd,.torrent-failed h4{font-size:12px}
+.torrent-failed .card-badge,.torrent-failed .card-more summary,.torrent-failed .detail-error{font-size:11px}
+@media(max-width:650px){.metadata-stream-card.torrent-complete{height:540px}.metadata-stream-card.torrent-failed{height:340px}}
+/* 页面顺序：两类条件、执行与生效条件、结果。 */
+.filter-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,1fr);gap:16px;align-items:start;margin-bottom:16px}
+.search-workflow .filter-section{min-width:0;margin:0}
+.filter-section .section-head h2,.filter-section>h2{margin:0 0 8px}
+.api-primary{grid-template-columns:1fr}
+.command-panel{margin-bottom:20px}
+.command-panel .actions{display:grid;grid-template-columns:minmax(230px,.8fr) minmax(0,1.2fr);gap:14px;margin-top:12px}
+.action-group{display:flex;flex-wrap:wrap;align-content:start;align-items:center;gap:8px;padding:13px;border:1px solid var(--line);border-radius:10px;background:#0d1720}
+.action-label{flex-basis:100%;color:var(--muted);font-size:13px}
+.action-group button{padding:9px 11px}
+.batch-options label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.batch-options input{width:auto;margin:0;accent-color:var(--accent)}
+.operation-feedback{margin-top:12px}
+.operation-feedback #sync-status,.operation-feedback #error{margin:6px 0}
+.operation-feedback:has(#sync-status:empty):has(#error[hidden]){display:none}
+.active-filter-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.active-filter-heading h3{margin:0}
+.command-panel .filter-groups{margin-top:10px}
+.result-summary{display:grid;gap:8px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#172432;font-size:14px;font-weight:700}
+.result-summary:has(#site-total:empty){display:none}
+.result-summary .result-overview{display:contents}
+.result-summary .result-metric:first-child{grid-row:1}
+.result-summary .result-metric:nth-child(2){grid-row:3}
+.result-summary #count{grid-row:2;color:var(--text)}
+.results-panel .results{margin-top:14px}
+@media(max-width:900px){.filter-layout,.command-panel .actions{grid-template-columns:1fr}}
+/* 参考 52BT 搜索页展开文件列表的满宽容器、虚线行与路径/大小双列排版：
+   https://qt05hwgs.529075.xyz/search-ABP-408-0-0-1.html?lang=zh_TW */
+.file-preview{width:100%;min-width:0;margin:12px 0 4px;padding:8px 12px;border:1px solid var(--line);border-radius:9px;background:#172432}
+.file-preview-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.file-tree-actions{display:flex;flex-wrap:wrap;gap:6px}
+.file-tree-actions button{padding:3px 7px;border:1px solid var(--line);background:transparent;color:var(--accent);font-size:13px}
+.file-preview h4{margin:0 0 4px}
+.file-preview .file-tree-level{width:100%;margin:0;padding:0}
+.file-preview .file-tree-level .file-tree-level{width:calc(100% - 12px);margin-left:12px;padding-left:12px;border-left:1px solid var(--line)}
+.file-preview .file-tree-file{display:grid;grid-template-columns:minmax(0,1fr) max-content;align-items:start;gap:12px;min-height:28px;margin:0;padding:5px 0;border:0;border-bottom:1px dashed var(--line);border-radius:0;background:transparent;line-height:1.4}
+.file-preview .file-tree-file:last-child{border-bottom:0}
+.file-preview .file-tree-file span:first-child{overflow-wrap:anywhere;white-space:normal}
+.file-preview .file-tree-size{align-self:start;justify-self:end;white-space:nowrap;text-align:right}
+.file-preview .file-tree-folder summary{margin:0;padding:6px 0;border-bottom:1px dashed var(--line);border-radius:0;background:transparent}
+/* 参考页的搜索结果采用浅绿底、白卡片、深绿文字和紧凑信息框。只作用于结果区。 */
+.results-panel{background:#eff8f2;border-color:#c6ddd3;color:#30463e}
+.results-panel h2,.results-panel h3,.results-panel h4{color:#17372d}
+.results-panel .muted{color:#6c8179}
+.results-panel .result-summary{background:#fff;border-color:#c6ddd3;color:#30463e;box-shadow:6px 6px 0 rgba(33,139,112,.08)}
+.results-panel .result-overview strong{color:#218b70}
+.results-panel .metadata-stream-card{height:auto;min-height:0;max-height:none;overflow:visible;margin:12px 0;padding:11px 13px;border:1px solid #c6ddd3;border-radius:10px;background:#fff;color:#30463e;box-shadow:6px 6px 0 rgba(33,139,112,.11);font-size:13px;line-height:1.6}
+.results-panel .metadata-card-title h3{margin:0 0 5px;font-size:14px;line-height:1.55;font-weight:580}
+.results-panel .card-badge{padding:3px 9px;border-color:#c6ddd3;border-radius:999px;background:#f0f5f1;color:#6c8179;font-size:12px;font-weight:400}
+.results-panel .metadata-card-facts{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0}
+.results-panel .metadata-card-facts div{display:inline-flex;align-items:baseline;gap:5px;min-width:0;padding:3px 9px;border-color:#c6ddd3;border-radius:999px;background:#f0f5f1}
+.results-panel .metadata-card-facts dt,.results-panel .metadata-card-facts dd{margin:0;font:400 12px/1.55 system-ui,"Microsoft YaHei",sans-serif;color:#6c8179}
+.results-panel .metadata-card-facts dd{color:#30463e;font-weight:600}
+.results-panel .card-actions a,.results-panel .card-actions button,.results-panel .pagination button{border-color:#218b70;color:#218b70;background:#fff}
+.results-panel .card-actions a:hover,.results-panel .card-actions button:hover,.results-panel .pagination button:hover{background:#f0f5f1}
+.results-panel .card-more{border-color:#c6ddd3}
+.results-panel .card-more summary,.results-panel .file-tree-folder summary{color:#218b70}
+.results-panel .file-preview{margin:8px 0 0;padding:6px 10px;border-color:#c6ddd3;background:#f0f5f1}
+.results-panel .file-preview h4{margin:0 0 3px;font-size:13px}
+.results-panel .file-preview .file-tree-level{font-size:13px;line-height:1.6}
+.results-panel .file-preview .file-tree-file{min-height:25px;padding:4px 0;border-bottom-color:#c6ddd3;color:#30463e}
+.results-panel .file-preview .file-tree-size{color:#6c8179;font-size:11px;font-weight:400}
+.results-panel .file-preview .file-tree-folder summary{border-bottom-color:#c6ddd3}
+.results-panel .torrent-success-badge,.results-panel .torrent-success-notice{border-color:#218b70;background:#e2f4e9;color:#18765f}
+.results-panel .metadata-stream-card.torrent-complete{height:auto;border-color:#218b70;box-shadow:6px 6px 0 rgba(33,139,112,.16);font-size:15px}
+.results-panel .torrent-complete .metadata-card-title h3{font-size:17px}
+.results-panel .torrent-complete .metadata-card-facts dt,.results-panel .torrent-complete .metadata-card-facts dd,.results-panel .torrent-complete .file-tree-level{font-size:14px}
+.results-panel .torrent-complete .file-tree-size{color:#218b70;font-size:13px;font-weight:700}
+.results-panel .metadata-stream-card.torrent-failed{height:auto;font-size:12px}
+.results-panel .torrent-failed .metadata-card-title h3{font-size:12px}
+.results-panel .torrent-failed .metadata-card-facts dt,.results-panel .torrent-failed .metadata-card-facts dd,.results-panel .torrent-failed .file-tree-level{font-size:11px}
+.results-panel .detail-error{color:#a33f3f}
+/* 统一参考页的浅色外观；结果按标题、信息、文件列表、操作排列。 */
+:root{color-scheme:light;--bg:#eff8f2;--panel:#fff;--line:#c6ddd3;--text:#30463e;--muted:#6c8179;--accent:#218b70}
+body{background:#eff8f2}
+header{min-height:140px}
+.panel{border-radius:10px}
+.filter-section,.search-card,.advanced-options,.filter-group,.action-group{background:#fff}
+input,select,textarea,.clear-input{background:#f0f5f1}
+button{color:#fff}.secondary{color:var(--accent)}
+.api-status-bar{background:rgba(239,248,242,.97)}
+.results-panel{padding:16px;background:transparent}
+.results-panel .metadata-stream-card{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:7px;row-gap:0;margin:10px 0;box-shadow:3px 3px 0 rgba(33,139,112,.09)}
+.results-panel .metadata-card-header{order:0;width:100%;align-items:baseline;justify-content:flex-start;gap:8px}
+.results-panel .metadata-card-title{flex:1}
+.results-panel .size-facts,.results-panel .activity-facts{order:1;margin:3px 0 7px}
+.results-panel .file-preview{order:2;margin:2px 0 7px}
+.results-panel .card-actions{order:3;width:100%;margin:3px 0}
+.results-panel .torrent-success-notice,.results-panel .detail-error,.results-panel .detail-pending{order:4}
+.results-panel .card-more{order:5;width:100%;margin:5px 0 0;padding:5px 0;border-bottom:0}
+.results-panel .metadata-stream-card>p.muted{order:2;width:100%;font-size:13px}
+.results-panel .metadata-file-node{background:#f0f5f1}
+.results-panel .torrent-complete .torrent-success-badge,.results-panel .torrent-success-notice{font-size:13px;padding:3px 7px}
+.results-panel .torrent-complete .card-actions a,.results-panel .torrent-complete .card-actions button{font-size:13px}
+.results-panel .file-preview .file-tree-level .file-tree-level{border-left-color:#c6ddd3}
+@media(max-width:650px){.results-panel{padding:10px}.results-panel .metadata-card-header{flex-direction:row}.results-panel .card-badge{white-space:normal}}
+/* 与参考主题一致的字体栈与紧凑文字密度。 */
+:root{--ui-font:"Avenir Next","PingFang SC",Arial,sans-serif}
+body,input,select,textarea,button{font-family:var(--ui-font);font-size:13px;line-height:1.6}
+body{font-weight:400}
+h1{font-size:20px}h2,h3,label,.advanced-options summary,.filter-group h3{font-size:14px}
+h1,h2,h3{font-weight:600}
+header{min-height:100px;gap:12px}header p{margin:5px 0}
+.panel{padding:14px;margin-bottom:12px}
+.filter-layout{gap:12px;margin-bottom:12px}
+.filter-section{padding:12px}.filter-section>p{margin:5px 0}
+.filter-section .search-card{padding:12px;margin:8px 0}
+.filter-section .search-card h3{margin-bottom:8px}
+.grid{gap:10px}.local-primary,.api-primary{margin-top:8px}
+label{gap:4px;font-size:13px}
+input,select,textarea,button{padding:7px 10px;border-radius:6px}
+.advanced-options summary{padding:9px 12px;font-size:13px}
+.filter-section .advanced-options{margin-top:10px}
+.advanced-body{padding:2px 12px 12px}
+.command-panel .actions{margin-top:8px;gap:10px}
+.action-group{padding:9px;gap:7px}.action-group button{padding:6px 10px}
+.active-filter-heading{margin-top:10px;padding-top:10px}
+.filter-group{padding:8px 10px}
+.result-overview,.api-status-bar .result-rate{font-size:14px;font-weight:500}
+.results-panel .metadata-card-title h3{font-family:var(--ui-font);font-size:14px;font-weight:500;line-height:1.55}
+.results-panel .metadata-card-facts dt,.results-panel .metadata-card-facts dd{font-family:var(--ui-font);font-weight:400}
+.results-panel .file-preview h4{font-size:12px;font-weight:500}
+.results-panel .file-preview .file-tree-file{font-size:13px;line-height:1.6;padding:2px 0;min-height:25px}
+.results-panel .metadata-stream-card{padding:10px 11px;margin:8px 0}
+.results-panel .torrent-complete .metadata-card-title h3{font-size:15px;font-weight:600}
+.results-panel .torrent-complete .metadata-card-facts dt,.results-panel .torrent-complete .metadata-card-facts dd,.results-panel .torrent-complete .file-tree-level{font-size:13px}
+.results-panel .torrent-failed .metadata-card-title h3{font-size:12px}
+.results-panel .torrent-failed .file-preview .file-tree-file{font-size:12px}
+@media(max-width:650px){h1{font-size:20px}header{min-height:100px}.panel{padding:12px}}
+/* 文件夹和文件使用同一张表，三个列宽始终一致。 */
+.results-panel .file-preview{overflow-x:auto}
+.results-panel .metadata-stream-card{height:auto;max-height:none;overflow:visible}
+.results-panel .file-list-viewport{max-height:204px;overflow-y:auto;overscroll-behavior:contain}
+.results-panel .file-list thead{position:sticky;top:0;z-index:1}
+.results-panel .file-list{width:100%;min-width:0;border-collapse:collapse;table-layout:fixed;color:#30463e;font-size:13px}
+.results-panel .file-list th:nth-child(2){width:110px}
+.results-panel .file-list th:nth-child(3){width:66px}
+.results-panel .file-list th,.results-panel .file-list td{height:34px;padding:4px 8px;border-bottom:1px solid #c6ddd3;vertical-align:middle;line-height:25px}
+.results-panel .file-list th{background:#e2f1e9;text-align:left;white-space:nowrap}
+.results-panel .file-list th:nth-child(n+2),.results-panel .file-list td:nth-child(n+2){text-align:right}
+.results-panel .file-list th button{width:100%;padding:0;border:0;background:transparent;color:#18765f;text-align:inherit;font-weight:700;cursor:pointer}
+.results-panel .file-list-name{overflow:hidden}
+.results-panel .file-name-label,.results-panel .file-folder-toggle{display:-webkit-box;width:100%;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;white-space:normal;overflow-wrap:anywhere;line-height:25px;max-height:50px}
+.results-panel .file-list tbody tr.file-list-double,.results-panel .file-list tbody tr.file-list-double td{height:68px}
+.results-panel .file-list-size,.results-panel .file-list-count{white-space:nowrap;color:#6c8179;font-variant-numeric:tabular-nums}
+.results-panel .file-list-folder{background:#eaf4ed;font-weight:600}
+.results-panel .file-folder-toggle{padding:0;border:0;background:transparent;color:#18765f;text-align:left;font:inherit;cursor:pointer}
+/* 条件按语义横向分组，取消不等高双栏留下的空白。 */
+.filter-layout{grid-template-columns:1fr;gap:8px}
+#structured-card{border:0;padding:0;margin:8px 0;background:transparent}
+#structured-card>h3{display:none}
+#structured-card>.grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.local-primary{grid-template-columns:repeat(2,minmax(0,1fr))}
+.api-primary{grid-template-columns:2fr 1fr 1fr}
+.filter-section .advanced-options{margin-top:8px;border:0;border-top:1px solid var(--line);border-radius:0}
+.advanced-options summary{padding:7px 0}
+.command-panel .actions{display:flex;gap:12px;flex-wrap:wrap}
+.action-group{border:0;background:transparent;padding:0;gap:7px}
+.action-label{flex-basis:auto;margin-right:3px}
+.command-panel .filter-groups{display:flex;flex-direction:column;gap:5px}
+.filter-group{display:flex;align-items:baseline;gap:10px;padding:5px 0;border:0;border-radius:0}
+.filter-group h3{flex:0 0 115px;font-size:13px;font-weight:500}
+.filter-group .filters{margin-top:0;gap:5px}
+/* 本地可移除条件紧贴筛选区，无条件时不占空间。 */
+#local-filter-chips{margin-top:8px;gap:5px}
+#local-filter-chips:empty{display:none}
+.active-filter-heading{margin-top:8px;padding-top:8px}
+.site-nav{margin:4px 0}header{min-height:85px}
+@media(max-width:650px){#structured-card>.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.api-primary{grid-template-columns:1fr 1fr}.api-primary>label:first-child{grid-column:1/-1}.filter-group{flex-wrap:wrap;gap:4px}.filter-group h3{flex-basis:100%}}
+/* 全页统一以 34px 为行高刻度；长文字最多使用相邻两个刻度。 */
+:root{--page-row:34px;--page-double-row:68px;--page-gap:8px}
+.api-status-content{min-height:var(--page-row)}
+.api-status-bar .result-rate,.api-status-bar #status{min-height:var(--page-row);display:flex;align-items:center}
+header{min-height:calc(var(--page-row)*3);align-items:center}
+header h1,header p,header .site-nav{margin:0;min-height:var(--page-row);display:flex;align-items:center}
+header .muted{max-height:var(--page-double-row);overflow:hidden}
+.panel{padding:var(--page-gap) 14px;margin-bottom:var(--page-gap)}
+.filter-layout{gap:var(--page-gap);margin-bottom:var(--page-gap)}
+.filter-section,.command-panel,.results-panel{min-width:0}
+.filter-section .section-head,.command-panel .section-head,.results-panel .section-head{min-height:var(--page-row);align-items:center}
+.filter-section .section-head h2,.filter-section>h2,.command-panel h2,.results-panel h2{min-height:var(--page-row);margin:0;display:flex;align-items:center}
+.filter-section>p,.results-panel .result-summary>.result-overview,.results-panel .result-summary>#count{min-height:var(--page-row);margin:0;display:flex;align-items:center}
+.filter-section>p{height:var(--page-double-row);max-height:var(--page-double-row);overflow:hidden}
+#api-query-note{display:block;padding:8px 0;overflow:auto;overflow-wrap:anywhere;line-height:26px}
+.filter-section .grid{row-gap:var(--page-gap)}
+.filter-section .grid>label{min-height:var(--page-double-row);align-content:start;grid-template-rows:26px var(--page-row);gap:var(--page-gap)}
+.filter-section input:not([type=checkbox]),.filter-section select,.command-panel button,.command-panel .batch-options label{height:var(--page-row);min-height:var(--page-row)}
+.filter-section .combined{height:var(--page-row)}
+.filter-section .combined input,.filter-section .combined select{height:100%}
+.filter-section .advanced-options summary{min-height:var(--page-row);display:flex;align-items:center;padding:0}
+.filter-section .advanced-body .grid>label{min-height:var(--page-double-row)}
+.command-panel .actions,.command-panel .action-group{align-items:center;row-gap:var(--page-gap)}
+.command-panel .action-group{min-height:var(--page-row)}
+.command-panel .action-label{min-height:var(--page-row);display:flex;align-items:center}
+.command-panel .batch-options label{display:flex;align-items:center;max-width:100%}
+.command-panel .batch-options label span{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2}
+.results-panel .result-summary{gap:0;padding:var(--page-gap) 14px}
+.results-panel .result-overview{min-height:var(--page-row);margin:0;padding:0;border:0;background:transparent;box-shadow:none;align-items:center}
+.results-panel .result-metric{min-height:var(--page-row);display:flex;align-items:center}
+.results-panel .metadata-stream-card{display:flex;align-content:start;align-items:center;row-gap:0;padding:var(--page-gap) 11px}
+.results-panel .metadata-card-header{min-height:var(--page-double-row);align-items:center}
+.results-panel .metadata-card-title h3{margin:0;max-height:50px;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;line-height:25px}
+.results-panel .size-facts,.results-panel .activity-facts,.results-panel .card-actions{width:100%;min-height:var(--page-row);margin:0;align-items:center}
+.results-panel .metadata-card-facts div,.results-panel .card-actions a,.results-panel .card-actions button{min-height:26px;display:inline-flex;align-items:center}
+.results-panel .file-preview{margin:0 0 var(--page-gap);width:100%}
+.results-panel .file-preview-header{min-height:var(--page-row);display:flex;align-items:center}
+.results-panel .file-preview h4{margin:0}
+.results-panel .metadata-stream-card>p.muted,.results-panel .detail-error,.results-panel .detail-pending,.results-panel .torrent-success-notice{min-height:var(--page-row);display:flex;align-items:center}
+.results-panel .card-more{min-height:var(--page-row);margin:0;padding:0}
+.results-panel .card-more summary{min-height:var(--page-row);display:flex;align-items:center}
+.results-panel .pagination{min-height:var(--page-row);align-items:center}
+@media(max-width:650px){.api-status-content{height:var(--page-double-row);align-content:center;gap:0}.api-status-bar .result-rate,.api-status-bar #status{flex:1 0 100%;height:var(--page-row);min-height:var(--page-row)}.api-status-bar #status{justify-content:flex-end;margin:0;padding:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.results-panel .metadata-card-header{min-height:var(--page-double-row)}}
+/* 单行模式：全页元素各占一个 34px 高度，长内容保留悬停标题或横向滚动。 */
+.api-status-content{height:var(--page-row);min-height:var(--page-row);flex-wrap:nowrap;overflow:hidden}
+.api-status-bar .result-rate,.api-status-bar #status{height:var(--page-row);min-height:var(--page-row);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.api-status-bar .result-rate{flex:1 1 auto}
+.api-status-bar #status{flex:0 1 auto;justify-content:flex-end}
+header{min-height:calc(var(--page-row)*3)}
+header .brand-line{height:var(--page-row);display:flex;align-items:center;gap:12px;min-width:0}
+header .brand-line .eyebrow,header .brand-line h1{min-height:var(--page-row);height:var(--page-row);margin:0;white-space:nowrap}
+header .brand-line h1{min-width:0;overflow:hidden;text-overflow:ellipsis}
+header .muted{height:var(--page-row);max-height:var(--page-row);white-space:nowrap;text-overflow:ellipsis}
+.filter-section>p{height:var(--page-row);min-height:var(--page-row);max-height:var(--page-row);white-space:nowrap;text-overflow:ellipsis}
+#api-query-note{height:var(--page-row);max-height:var(--page-row);padding:4px 0;overflow-x:auto;overflow-y:hidden;white-space:nowrap;text-overflow:clip;line-height:25px}
+.filter-section .grid>label,.filter-section .advanced-body .grid>label{height:var(--page-row);min-height:var(--page-row);display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:var(--page-row);align-items:center;gap:8px;white-space:nowrap}
+.filter-section .grid>label>.input-shell,.filter-section .grid>label>.combined,.filter-section .grid>label>input,.filter-section .grid>label>select{min-width:0}
+.filter-section .grid>label>.combined{width:100%}
+.filter-section .grid>label>.input-shell input{height:var(--page-row)}
+.command-panel .batch-options label span{display:block;white-space:nowrap;text-overflow:ellipsis}
+.results-panel .metadata-card-header{height:var(--page-row);min-height:var(--page-row);flex-wrap:nowrap;overflow:hidden}
+.results-panel .metadata-card-title{min-width:0}
+.results-panel .metadata-card-title h3{height:var(--page-row);max-height:var(--page-row);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:var(--page-row)}
+.results-panel .card-badge{flex:0 0 auto;white-space:nowrap}
+.results-panel .file-name-label,.results-panel .file-folder-toggle{display:block;max-height:25px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.results-panel .file-list tbody tr,.results-panel .file-list tbody tr td,.results-panel .file-list tbody tr.file-list-double,.results-panel .file-list tbody tr.file-list-double td{height:var(--page-row)}
+.results-panel .metadata-stream-card>p.muted,.results-panel .detail-error,.results-panel .detail-pending,.results-panel .torrent-success-notice{height:var(--page-row);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:650px){.api-status-content{height:var(--page-row)}.api-status-bar .result-rate,.api-status-bar #status{flex:1 1 auto;height:var(--page-row);min-height:var(--page-row);padding:0}.results-panel .metadata-card-header{height:var(--page-row);min-height:var(--page-row)}}
+.header-info{height:var(--page-row);display:flex;align-items:center;gap:16px;min-width:0}
+.header-info .muted{min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.header-info .site-nav{flex:0 0 auto;margin:0}
+.header-info .header-separator{flex:0 0 auto;color:var(--muted)}
+header{min-height:calc(var(--page-row)*2)}

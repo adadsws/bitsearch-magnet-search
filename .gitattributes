@@ -1,0 +1,2 @@
+# Windows 启动入口必须保持 CRLF，避免 cmd.exe 误拆命令。
+*.bat text eol=crlf

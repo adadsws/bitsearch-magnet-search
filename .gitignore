@@ -1,0 +1,18 @@
+# 本机 Python 虚拟环境。
+.venv/
+**/.venv/
+
+# Python 原地生成缓存。
+**/__pycache__/
+*.py[cod]
+
+# pytest 原地生成缓存。
+**/.pytest_cache/
+
+# 可从源码重新生成的运行结果与诊断。
+/~outputs/
+/~outputs-intermediate/
+/~temp/
+**/~outputs/
+**/~outputs-intermediate/
+**/~temp/
